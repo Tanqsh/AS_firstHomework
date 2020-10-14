@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--主界面-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--include引入了顶部、底部布局-->
     <include layout="@layout/top"/>
 
     <FrameLayout
@@ -12,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="607dp"
         android:layout_weight="1"></FrameLayout>
-
 
     <include layout="@layout/bottom"/>
 

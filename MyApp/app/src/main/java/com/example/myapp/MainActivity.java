@@ -11,14 +11,16 @@ import android.app.FragmentTransaction;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+//MainActivity类要实现OnClickListener，并在类中重写onClick方法
 public class MainActivity extends Activity implements View.OnClickListener {
 
+    //数据成员声明
     private Fragment mTab01 = new FindFragment();
     private Fragment mTab02 = new StoreFragment();
     private Fragment mTab03 = new DiscussionFragment();
     private Fragment mTab04 = new MineFragment();
 
-    private FragmentManager fm;
+    private FragmentManager fm;//通讯控制器
 
     private LinearLayout mTabFind;
     private LinearLayout mTabStore;
@@ -34,7 +36,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);  //隐藏widow头
         setContentView(R.layout.activity_main);
 
         initView();
@@ -43,6 +45,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setfragment(0);
     }
 
+    //Fragment初始化
     private void initFragment(){
         fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
@@ -61,6 +64,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mTabMine.setOnClickListener(this);
     }
 
+    //view初始化
     private void initView(){
         mTabFind = (LinearLayout)findViewById(R.id.find);
         mTabStore = (LinearLayout)findViewById(R.id.store);
@@ -131,7 +135,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    //还原图标
+    //bottom图标初始化
     public void resetimg(){
         mImgFind.setImageResource(R.drawable.find);
         mImgStore.setImageResource(R.drawable.store);

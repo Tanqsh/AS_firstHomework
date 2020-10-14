@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
+
+//将R.layout.tab02压缩到StoreFragment类中，将一个fragment对象化，就可通过调用对象的形式来调用fragment
 public class StoreFragment extends Fragment {
 
 

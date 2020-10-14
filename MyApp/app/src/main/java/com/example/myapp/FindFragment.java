@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
+
+//将R.layout.tab01压缩到FindFragment类中，将一个fragment对象化，就可通过调用对象的形式来调用fragment
 public class FindFragment extends Fragment {
 
 
