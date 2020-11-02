@@ -13,7 +13,12 @@
         android:id="@+id/id_content"
         android:layout_width="match_parent"
         android:layout_height="607dp"
-        android:layout_weight="1"></FrameLayout>
+        android:layout_weight="1">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/findRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <include layout="@layout/bottom"/>
 

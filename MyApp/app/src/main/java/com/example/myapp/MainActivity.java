@@ -1,7 +1,9 @@
 package com.example.myapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 
@@ -11,10 +13,18 @@ import android.app.FragmentTransaction;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+//import static com.example.myapp.R.id.findRecyclerView;
+
 //MainActivity类要实现OnClickListener，并在类中重写onClick方法
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    //数据成员声明
+    //数据成员声明：第一次作业
     private Fragment mTab01 = new FindFragment();
     private Fragment mTab02 = new StoreFragment();
     private Fragment mTab03 = new DiscussionFragment();
@@ -33,19 +43,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private ImageButton mImgMine;
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);  //隐藏widow头
+        //第一次作业
         setContentView(R.layout.activity_main);
 
         initView();
         limitListener();
         initFragment();
         setfragment(0);
+
+
     }
 
-    //Fragment初始化
+    //第一次作业：Fragment初始化
     private void initFragment(){
         fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
@@ -56,7 +72,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         transaction.commit();
     }
 
-    //将监听范围限制在bottom中的四个LinearLayout中，避免由于全屏监听所造成的大量内存消耗
+    //第一次作业：将监听范围限制在bottom中的四个LinearLayout中，避免由于全屏监听所造成的大量内存消耗
     private void limitListener(){
         mTabFind.setOnClickListener(this);
         mTabStore.setOnClickListener(this);
@@ -64,7 +80,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mTabMine.setOnClickListener(this);
     }
 
-    //view初始化
+    //第一次作业：view初始化
     private void initView(){
         mTabFind = (LinearLayout)findViewById(R.id.find);
         mTabStore = (LinearLayout)findViewById(R.id.store);
@@ -77,7 +93,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mImgMine = (ImageButton)findViewById(R.id.mineImage);
     }
 
-    //Hidefragment函数，先将所有页面先hide起来，select中后再展示
+    //第一次作业：Hidefragment函数，先将所有页面先hide起来，select中后再展示
     private void Hidefragment(FragmentTransaction transaction){
         transaction.hide(mTab01);
         transaction.hide(mTab02);
@@ -85,7 +101,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         transaction.hide(mTab04);
     }
 
-    //select中第i个页面以展示
+    //第一次作业：select中第i个页面以展示
     private void setfragment(int i){
         FragmentTransaction transaction = fm.beginTransaction();
         Hidefragment(transaction);
@@ -112,7 +128,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         transaction.commit();
     }
 
-    //重写点击响应函数,点击到相应的LinearLayout，传对应值到setfragment函数，进行页面内容和bottom图标切换
+    //第一次作业：重写点击响应函数,点击到相应的LinearLayout，传对应值到setfragment函数，进行页面内容和bottom图标切换
     @Override
     public void onClick(View view) {
         //做图标切换前先初始化一次所有图标
@@ -135,11 +151,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    //bottom图标初始化
+    //第一次作业：bottom图标初始化
     public void resetimg(){
         mImgFind.setImageResource(R.drawable.find);
         mImgStore.setImageResource(R.drawable.store);
         mImgDiscussion.setImageResource(R.drawable.discussion);
         mImgMine.setImageResource(R.drawable.mine);
     }
+
+
+
 }

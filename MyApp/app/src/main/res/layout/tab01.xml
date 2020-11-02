@@ -4,14 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="1492年10月12日哥伦布发现美洲\n     此刻   你发现了Game Store"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/findRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
