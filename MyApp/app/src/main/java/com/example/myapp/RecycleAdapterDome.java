@@ -53,5 +53,22 @@ public class RecycleAdapterDome extends RecyclerView.Adapter<RecycleAdapterDome.
         return list.size();
     }
 
+    /**
+     * 设置item的监听事件的接口
+     */
+    public interface OnItemClickListener {
+        /**
+         * 接口中的点击每一项的实现方法，参数自己定义
+         */
+        public void OnItemClick(View view, List<String> list);
+    }
+
+    //需要外部访问，所以需要设置set方法，方便调用
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
 }
 

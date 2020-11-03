@@ -7,7 +7,9 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,12 +57,21 @@ public class FindFragment extends Fragment {
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapterDome);
-
+        //设置item的分割线
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+        //在RecyclerView中为适配器中写监听事件的接口
+        adapterDome.setOnItemClickListener(new RecycleAdapterDome.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, List<String> list) {
+                //此处进行监听事件的业务处理
+                Toast.makeText(getActivity(),"正在加载应用详情~",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }
 
-    //第二次作业：初始化数据
+    //初始化数据
     private void initData() {
 
         list.add("王者荣耀");
@@ -81,5 +92,7 @@ public class FindFragment extends Fragment {
         list.add("开心消消乐");
         list.add("我叫MT");
     }
+
+
 
 }
