@@ -42,23 +42,21 @@ public class FindFragment extends Fragment {
 
         //第二次作业
 
+        initData();//初始化数据集合list
+
         //获取fragment的layout
         view = inflater.inflate(R.layout.tab01, container, false);
 
-        recyclerView = view.findViewById(R.id.findRecyclerView);
-
-        initData();//初始化数据集合list
+        recyclerView = (RecyclerView)view.findViewById(R.id.findRecyclerView);
         adapterDome = new RecycleAdapterDome(getActivity(),list);
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
-
-
+        recyclerView.setAdapter(adapterDome);
 
         //纵向布局
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(adapterDome);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
         //设置item的分割线
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+
         //在RecyclerView中为适配器中写监听事件的接口
         adapterDome.setOnItemClickListener(new RecycleAdapterDome.OnItemClickListener() {
             @Override

@@ -12,11 +12,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RecycleAdapterDome extends RecyclerView.Adapter<RecycleAdapterDome.MyViewHolder> {
     private Context context;
-    private List<String> list;
+    private List<String> list = new ArrayList<>();
     private View inflater;
 
     class MyViewHolder extends RecyclerView.ViewHolder{
@@ -24,6 +26,19 @@ public class RecycleAdapterDome extends RecyclerView.Adapter<RecycleAdapterDome.
         public MyViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.text1);
+
+            //在adapter中设置点击事件
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //可以选择直接在本位置直接写业务处理
+                    //Toast.makeText(context,"点击了xxx",Toast.LENGTH_SHORT).show();
+                    //此处回传点击监听事件
+                    if(onItemClickListener!=null){
+                        onItemClickListener.OnItemClick(v, Collections.singletonList(list.get(getLayoutPosition())));
+                    }
+                }
+            });
         }
     }
 
@@ -33,13 +48,16 @@ public class RecycleAdapterDome extends RecyclerView.Adapter<RecycleAdapterDome.
         this.list = list;
     }
 
-    @NonNull
+
     @Override
-    public RecycleAdapterDome.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //创建ViewHolder，返回每一项的布局
-        inflater = LayoutInflater.from(context).inflate(R.layout.item,parent,false);
-        MyViewHolder myViewHolder = new MyViewHolder(inflater);
-        return myViewHolder;
+//        inflater = LayoutInflater.from(context).inflate(R.layout.item,parent,false);
+////        MyViewHolder myViewHolder = new MyViewHolder(inflater);
+////        return myViewHolder;
+        //创建自定义布局
+        View itemView = View.inflate(context, R.layout.item, null);
+        return new MyViewHolder(itemView);
     }
 
     @Override
