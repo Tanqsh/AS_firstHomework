@@ -9,26 +9,32 @@
 
     <TextView
         android:id="@+id/text1"
-
-
         android:layout_width="match_parent"
         android:layout_height="70sp"
         android:textSize="30sp"
         android:text="王者荣耀"
 
         android:gravity="center"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="150dp"/>
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="120dp"/>
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="28dp"
-        android:text="下载"
-        />
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="14dp"
+        android:text="下载" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/game_img" />
 
 
 </RelativeLayout>
